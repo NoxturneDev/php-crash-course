@@ -11,15 +11,31 @@
   }
 */
 
+// similar to javascript for
+for($i = 0; $i <= 10; $i++){
+  echo "number : $i <br>";
+}
+
+$array = ['galih', 'adhi', 'kusuma'];
+
+for($i = 0; $i <= count($array) - 1; $i++){
+  echo "Name: " . $array[$i] . "<br>";
+}
 
 /* ------------ While Loop ------------ */
-
 /*
 ** While Loop Syntax
   while (condition) {
-  // code to be executed
+    statement
   }
 */
+
+$boundaries = 1;
+while($boundaries <= 10){
+  echo "Current boundary : $boundaries <br>";
+  $boundaries++;
+}
+
 
 
 /* ---------- Do While Loop --------- */
@@ -43,3 +59,17 @@ do...while loop will always execute the block of code once, even if the conditio
   // code to be executed
   }
 */
+$array_each_index = ['galihh', 'adhi', 'kusuma'];
+foreach($array_each_index as $value){
+  echo "$value";
+}
+
+$array_each = [
+  'name' => 'galih adhi kusuma',
+  'age' => 20,
+  'phone' => 129301301
+];
+
+foreach($array_each as $key => $value) {
+  echo "$key : $value <br>";
+}
