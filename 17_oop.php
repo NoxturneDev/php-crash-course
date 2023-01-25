@@ -1,11 +1,12 @@
-<?php 
+<?php
 /* --- Object Oriented Programming -- */
 
 /*
   From PHP5 onwards you can write PHP in either a procedural or object oriented way. OOP consists of classes that can hold "properties" and "methods". Objects can be created from classes.
 */
 
-class User {
+class User
+{
   // Properties are just variables that belong to a class.
   // Access Modifiers: public, private, protected
   // public - can be accessed from anywhere
@@ -17,7 +18,8 @@ class User {
 
   // The constructor is called whenever an object is created from the class.
   // We pass in properties to the constructor from the outside.
-  public function __construct($name, $email, $password) {
+  public function __construct($name, $email, $password)
+  {
     // We assign the properties passed in from the outside to the properties we created inside the class.
     $this->name = $name;
     $this->email = $email;
@@ -29,29 +31,32 @@ class User {
   //   $this->name = $name;
   // }
 
-  function getName() {
+  function getName()
+  {
     return $this->name;
   }
 
-  function login() {
+  function login()
+  {
     return "User $this->name is logged in.";
   }
 
   // Destructor is called when an object is destroyed or the end of the script.
-  function __destruct() {
+  function __destruct()
+  {
     echo "The user name is {$this->name}.";
   }
 }
 
 // Instantiate a new user
-$user1 = new User('Brad', 'brad@gmail.com', '123456');
-echo $user1->getName();
-echo $user1->login();
+// $user1 = new User('Brad', 'brad@gmail.com', '123456');
+// echo $user1->getName();
+// echo $user1->login();
 
 // Add a value to a property
 // $user1->name = 'Brad';
 
-var_dump($user1);
+// var_dump($user1);
 // echo $user1->name;
 
 /* ----------- Inheritence ---------- */
@@ -61,16 +66,78 @@ var_dump($user1);
   It is achieved by creating a new class that extends an existing class.
 */
 
-class employee extends User {
-  public function __construct($name, $email, $password, $title) {
+class Employee extends User
+{
+  public $title;
+
+  public function __construct($name, $email, $password, $title)
+  {
     parent::__construct($name, $email, $password);
     $this->title = $title;
   }
 
-  public function getTitle() {
+  public function getTitle()
+  {
     return $this->title;
   }
 }
 
-$employee1 = new employee('John','johndoe@gmail.com','123456','Manager');
-echo $employee1->getTitle();
+// $employee1 = new Employee('John', 'johndoe@gmail.com', '123456', 'Manager');
+// echo $employee1->getTitle();
+
+
+
+
+
+
+
+
+
+class Animal
+{
+  public $name;
+  public $species;
+  public $food;
+
+  public function __construct($name, $species, $food)
+  {
+    $this->name = $name;
+    $this->species = $species;
+    $this->food = $food;
+  }
+
+  public function sounds($sound)
+  {
+    echo $sound;
+  }
+}
+
+
+$cat = new Animal('Dodo', 'Cat', 'Chicken');
+
+$cat->sounds('meowww!');
+
+class Birds extends Animal
+{
+  public $max_fly;
+
+  public function __construct($name, $species, $food, $max_fly)
+  {
+    parent::__construct($name, $species, $food);
+
+    $this->max_fly = $max_fly;
+  }
+
+  public function fly_high($meters)
+  {
+    if ($meters > $this->max_fly) {
+      echo 'Flying too high';
+    } else {
+      echo 'Flying hiigghh kaawkkk';
+    }
+  }
+}
+
+$eagle = new Birds('American', 'Birds', 'Snake', 300);
+
+$eagle->sounds('gawk gawk gawk');
